@@ -24,4 +24,6 @@ data class User(
     val mobile: String,
     val address: String,
     val password: String,
+
 ) : Parcelable
+

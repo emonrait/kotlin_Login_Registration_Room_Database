@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinloginregistrationroom.R
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.fragment_registration.*
 
 
 class LoginFragment : Fragment() {
@@ -25,10 +27,32 @@ class LoginFragment : Fragment() {
         }
 
         view.login.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_listFragment)
+            val email = Email.text.toString()
+            val password = Password.text.toString()
+            if (inputCheck(email, password)) {
+                Snackbar.make(scrollview5, "Login Successful", Snackbar.LENGTH_LONG).show()
+                Email.setText("")
+                Password.setText("")
+
+                findNavController().navigate(R.id.action_loginFragment_to_listFragment)
+
+            } else {
+                Snackbar.make(
+                    scrollview5,
+                    "Registration Unsuccessful! Please input Email & Password",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+
+
         }
 
         return view
+    }
+
+    private fun inputCheck(email: String, password: String): Boolean {
+        return !(email.isEmpty() && password.isEmpty())
+
     }
 
 }

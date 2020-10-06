@@ -12,10 +12,7 @@ interface UserDao {
     @Query("SELECT * FROM user_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<User>>
 
-    @Query(
-        "SELECT * FROM user_table WHERE email LIKE :email AND " +
-                "email LIKE :password LIMIT 1"
-    )
+    @Query("SELECT * FROM user_table WHERE email=(:email) and password=(:password)")
     fun userLogin(email: String, password: String): User
 
     @Update
