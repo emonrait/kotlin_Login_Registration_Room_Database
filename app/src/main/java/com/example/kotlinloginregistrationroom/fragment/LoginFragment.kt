@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
             } else {
                 Snackbar.make(
                     scrollview5,
-                    "Registration Unsuccessful! Please input Email & Password",
+                    "Login Unsuccessful! Please input Email & Password",
                     Snackbar.LENGTH_LONG
                 ).show()
             }
